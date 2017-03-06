@@ -17,7 +17,7 @@ class Game:
             if self.sum_hand(hand) > 21:
                 for card in hand:
                     if card.value == 14:
-                        idx = hand.index(item)
+                        idx = hand.index(card)
                         hand[idx] = (Card(1, card.suit))
                         if self.sum_hand(hand) < 21:
                             break
