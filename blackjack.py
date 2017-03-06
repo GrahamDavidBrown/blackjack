@@ -27,9 +27,13 @@ class Game:
             if self.sum_hand(hand) > 21:
                 self.player_bust = True
                 print("BUST!")
+                print("Your final total is: " + str(self.sum_hand(hand)))
+                self.player_final = self.sum_hand(hand)
                 break
             if self.sum_hand(hand) == 21:
                 print("BLACKJACK!")
+                print("Your final total is: " + str(self.sum_hand(hand)))
+                self.player_final = self.sum_hand(hand)
                 break
             else:
                 user_in = input("take another hit?(y,n): ").lower()
