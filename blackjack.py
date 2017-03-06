@@ -15,10 +15,10 @@ class Game:
     def player_turn(self, deck, hand):
         while 1:
             if self.sum_hand(hand) > 21:
-                for item in hand:
-                    if item.value == 14:
+                for card in hand:
+                    if card.value == 14:
                         idx = hand.index(item)
-                        hand[idx] = (Card(1, item.suit))
+                        hand[idx] = (Card(1, card.suit))
                         if self.sum_hand(hand) < 21:
                             break
             for card in hand:
@@ -34,6 +34,7 @@ class Game:
             else:
                 user_in = input("take another hit?(y,n): ").lower()
                 if user_in == 'y':
+                    print("player hits.")
                     hand.append(deck.pop())
                 elif user_in == 'n':
                     print("Your final total is: " + str(self.sum_hand(hand)))
@@ -61,6 +62,7 @@ class Game:
                 break
             else:
                 if self.sum_hand(hand) <= 17:
+                    print("dealer hits.")
                     hand.append(deck.pop())
                 else:
                     print("Dealer final total is: " + str(self.sum_hand(hand)))
@@ -89,9 +91,7 @@ def main(deck):
     while 1:
         fresh_deck = deck
         player_hand = []
-        player_total = 0
         dealer_hand = []
-        dealer_total = 0
         count = 0
         # from line 97 to 118 deck is a list
         deck = deck.shuffle_deck()
