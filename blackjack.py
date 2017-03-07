@@ -65,7 +65,7 @@ class Game:
                 print("DEALER BLACKJACK!")
                 break
             else:
-                if self.sum_hand(hand) <= 17:
+                if self.sum_hand(hand) < 17:
                     print("dealer hits.")
                     hand.append(deck.pop())
                 else:
