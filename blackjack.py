@@ -92,8 +92,6 @@ class Game:
 
 deck_list = [Card(val, suit) for suit in all_suits_list for val in all_values_list]
 deck = Deck(deck_list)
-# for item in deck.deck:
-#     print(item.short_card())
 
 
 def main(deck):
@@ -104,7 +102,7 @@ def main(deck):
         player_hand = []
         dealer_hand = []
         count = 0
-        # from line 108 to 128 deck is a list
+        # from line 106 to 126 deck is a list
         deck = deck.shuffle_deck()
         player_hand.append(deck.pop())
         dealer_hand.append(deck.pop())
@@ -114,7 +112,7 @@ def main(deck):
         game.player_turn(deck, game.player_hand)
         game.dealer_turn(deck, game.dealer_hand)
         if game.player_bust and game.dealer_bust:
-            print("draw")
+            print("A draw, how droll")
         elif game.player_bust and not game.dealer_bust:
             print("player loses")
         elif game.dealer_bust and not game.player_bust:
@@ -122,9 +120,9 @@ def main(deck):
         elif game.player_final > game.dealer_final:
             print("player wins!")
         elif game.dealer_final > game.player_final:
-            print("player loses")
+            print("Player loses")
         else:
-            print("draw")
+            print("A draw, how droll")
         deck = fresh_deck
         game.player_bust = False
         game.dealer_bust = False
