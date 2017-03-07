@@ -13,6 +13,7 @@ class Game:
         self.dealer_final = 0
 
     def player_turn(self, deck, hand):
+        print("PLAYER TURN")
         while 1:
             if self.sum_hand(hand) > 21:
                 for card in hand:
@@ -27,12 +28,12 @@ class Game:
             if self.sum_hand(hand) > 21:
                 self.player_bust = True
                 print("BUST!")
-                print("Your final total is: " + str(self.sum_hand(hand)))
+                print("Your final total is: " + str(self.sum_hand(hand)) + "\n")
                 self.player_final = self.sum_hand(hand)
                 break
             if self.sum_hand(hand) == 21:
                 print("BLACKJACK!")
-                print("Your final total is: " + str(self.sum_hand(hand)))
+                print("Your final total is: " + str(self.sum_hand(hand)) + "\n")
                 self.player_final = self.sum_hand(hand)
                 break
             else:
@@ -41,11 +42,12 @@ class Game:
                     print("player hits.")
                     hand.append(deck.pop())
                 elif user_in == 'n':
-                    print("Your final total is: " + str(self.sum_hand(hand)))
+                    print("Your final total is: " + str(self.sum_hand(hand)) + "\n")
                     self.player_final = self.sum_hand(hand)
                     break
 
     def dealer_turn(self, deck, hand):
+        print("DEALER TURN")
         while 1:
             if self.sum_hand(hand) > 21:
                 for card in hand:
@@ -60,16 +62,20 @@ class Game:
             if self.sum_hand(hand) > 21:
                 self.dealer_bust = True
                 print("DEALER BUST!")
+                print("Dealer final total is: " + str(self.sum_hand(hand))+"\n")
+                self.dealer_final = self.sum_hand(hand)
                 break
             if self.sum_hand(hand) == 21:
                 print("DEALER BLACKJACK!")
+                print("Dealer final total is: " + str(self.sum_hand(hand))+"\n")
+                self.dealer_final = self.sum_hand(hand)
                 break
             else:
                 if self.sum_hand(hand) < 17:
                     print("dealer hits.")
                     hand.append(deck.pop())
                 else:
-                    print("Dealer final total is: " + str(self.sum_hand(hand)))
+                    print("Dealer final total is: " + str(self.sum_hand(hand))+"\n")
                     self.dealer_final = self.sum_hand(hand)
                     break
 
@@ -93,11 +99,12 @@ deck = Deck(deck_list)
 def main(deck):
     print("Welome to Blackjack!")
     while 1:
+        print("\n")
         fresh_deck = deck
         player_hand = []
         dealer_hand = []
         count = 0
-        # from line 97 to 118 deck is a list
+        # from line 108 to 128 deck is a list
         deck = deck.shuffle_deck()
         player_hand.append(deck.pop())
         dealer_hand.append(deck.pop())
